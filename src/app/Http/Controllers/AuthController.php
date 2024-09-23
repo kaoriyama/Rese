@@ -8,6 +8,7 @@ class AuthController extends Controller
 {
     public function index()
     {
-    return view('index');
+    $areas = Area::all();
+    return view('index', ['areas' => $areas]);
     }
 }
