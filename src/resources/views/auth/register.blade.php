@@ -12,7 +12,7 @@
             <div class="register-header">
                 Registration
             </div>
-            <form class="form" action="/register" method="post">
+            <form class="form" action="{{ route('register') }}" method="post">
                 @csrf
                 <div class="form-group">
                     <label for="name">
@@ -23,6 +23,9 @@
                         Username
                     </label>
                     <input id="name" type="text" name="name" required autofocus>
+                    @error('name')
+                        <span class="error">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="email">
@@ -32,6 +35,9 @@
                         Email
                     </label>
                     <input id="email" type="email" name="email" required>
+                    @error('email')
+                        <span class="error">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="password">
@@ -41,6 +47,18 @@
                         Password
                     </label>
                     <input id="password" type="password" name="password" required>
+                    @error('password')
+                        <span class="error">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label for="password_confirmation">
+                        <svg class="input-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                        </svg>
+                        Confirm Password
+                    </label>
+                    <input id="password_confirmation" type="password" name="password_confirmation" required>
                 </div>
                 <div class="form-actions">
                     <button type="submit" class="register-button">登録</button>
