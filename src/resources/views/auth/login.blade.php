@@ -8,15 +8,12 @@
 </head>
 <body>
     <div class="container">
-        <div class="logo">
-            Rese
-        </div>
         <div class="login-card">
             <div class="login-header">
                 Login
             </div>
             <form action="{{ route('login') }}" method="POST">
-                @csrf
+            @csrf
                 <div class="form-group">
                     <label for="email">
                         Email
