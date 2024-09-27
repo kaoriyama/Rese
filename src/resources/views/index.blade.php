@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rese - レストラン予約サービス</title>
-    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
-</head>
-<body>
+@extends('layouts.app')
+
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/index.css') }}">
+@endsection
+
+@section('content')
     <header class="header">
         <div class="search-bar">
             <select>
@@ -42,12 +40,13 @@
         </div>
         @endforeach
     </main>
+@endsection
 
-    <script>
-        function toggleFavorite(restaurantId) {
-            // お気に入り切り替えのロジックをここに実装
-            console.log('Toggle favorite for restaurant ID:', restaurantId);
-        }
-    </script>
-</body>
-</html>
+@section('scripts')
+<script>
+    function toggleFavorite(restaurantId) {
+        // お気に入り切り替えのロジックをここに実装
+        console.log('Toggle favorite for restaurant ID:', restaurantId);
+    }
+</script>
+@endsection
