@@ -22,9 +22,18 @@
             </a>
             <nav class="nav">
                 <ul class="nav__list">
-                    <li class="nav__item"><a href="/" class="nav__link">Home</a></li>
-                    <li class="nav__item"><a href="/register" class="nav__link">Registration</a></li>
-                    <li class="nav__item"><a href="/login" class="nav__link">Login</a></li>
+                    @guest
+                        <li class="nav__item"><a href="/" class="nav__link">Home</a></li>
+                        <li class="nav__item"><a href="{{ route('register') }}" class="nav__link">Registration</a></li>
+                        <li class="nav__item"><a href="{{ route('login') }}" class="nav__link">Login</a></li>
+                    @else
+                        <li class="nav__item"><a href="/" class="nav__link">Home</a></li>
+                        <li class="nav__item"><a href="{{ route('logout') }}" class="nav__link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
+                        <li class="nav__item"><a href="{{ route('mypage') }}" class="nav__link">Mypage</a></li>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    @endguest
                 </ul>
             </nav>
         </div>

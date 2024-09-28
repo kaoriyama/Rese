@@ -14,3 +14,5 @@ Route::get('/restaurants/{id}', [ContactController::class, 'show'])->name('resta
 Route::get('/restaurants/{id}', [ContactController::class, 'show'])->name('restaurants.show');
 
 Route::get('/', [ContactController::class, 'index'])->name('index');
+
+Route::get('/mypage', [MypageController::class, 'index'])->name('mypage')->middleware('auth');
