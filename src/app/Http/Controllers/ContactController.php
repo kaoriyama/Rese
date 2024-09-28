@@ -17,4 +17,10 @@ class ContactController extends Controller
 
         return view('index', compact('restaurants', 'areas', 'genres'));
     }
+
+    public function show($id)
+    {
+        $restaurant = Restaurant::with(['area', 'genre'])->findOrFail($id);
+        return view('shop_detail', compact('restaurant'));
+    }
 }
