@@ -36,4 +36,9 @@ class AuthController extends Controller
 
         return redirect('/')->with('success', '会員登録が完了しました。');
     }
+
+    public function showThanksPage()
+    {
+        return view('auth.thanks');
+    }
 }

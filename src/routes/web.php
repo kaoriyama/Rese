@@ -21,6 +21,11 @@ Route::get('/mypage', [MypageController::class, 'index'])->name('mypage')->middl
 
 Route::post('/reservations', [ReservationController::class, 'store'])->name('reservations.store')->middleware('auth');
 
+// 会員登録完了ページ
+Route::get('/thanks', [AuthController::class, 'showThanksPage'])->name('register.thanks');
+
+// 予約完了ページ
+Route::get('/done', [ContactController::class, 'showDonePage'])->name('reservation.done');
 
 
 
