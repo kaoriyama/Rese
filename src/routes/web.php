@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Auth\MypageController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ReservationController;
 
 Route::get('/', [ContactController::class, 'index']);
 

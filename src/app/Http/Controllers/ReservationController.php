@@ -22,6 +22,7 @@ class ReservationController extends Controller
             'reservation_date' => $validatedData['date'],
             'reservation_time' => $validatedData['time'],
             'number_of_guests' => $validatedData['number_of_guests'],
+            'status' => 'pending',
         ]);
 
         return redirect()->back()->with('success', '予約が完了しました。');
