@@ -18,6 +18,9 @@ Route::get('/', [ContactController::class, 'index'])->name('index');
 
 Route::get('/mypage', [MypageController::class, 'index'])->name('mypage')->middleware('auth');
 
+Route::post('/reservations', [ReservationController::class, 'store'])->name('reservations.store')->middleware('auth');
+
+
 
 
 
