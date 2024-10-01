@@ -27,6 +27,9 @@ Route::get('/thanks', [AuthController::class, 'showThanksPage'])->name('register
 // 予約完了ページ
 Route::get('/done', [ContactController::class, 'showDonePage'])->name('reservation.done');
 
+Route::delete('/reservations/{reservation}', [ReservationController::class, 'cancel'])->name('reservations.cancel')->middleware('auth');
+
+
 
 
 

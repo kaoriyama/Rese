@@ -20,23 +20,34 @@
     @auth
     <div class="reservation-form">
         <h2>予約</h2>
-        <form action="{{ route('reservations.store') }}" method="POST">
+        <form action="{{ route('reservations.store') }}" method="POST" id="reservation-form">
             @csrf
             <input type="hidden" name="restaurant_id" value="{{ $restaurant->id }}">
             <div class="form-group">
-                <input type="date" name="date" value="{{ date('Y-m-d') }}" required>
+                <input type="date" name="date" id="reservation-date" value="{{ date('Y-m-d') }}" required>
             </div>
             <div class="form-group">
-                <select name="time" required>
+                <select name="time" id="reservation-time" required>
                     <option value="17:00">17:00</option>
-                    <!-- Add more time options here -->
+                    <option value="18:00">18:00</option>
+                    <option value="19:00">19:00</option>
+                    <option value="20:00">20:00</option>
+                    <option value="21:00">21:00</option>
+                    <option value="22:00">22:00</option>
                 </select>
             </div>
             <div class="form-group">
-                <select name="number_of_guests" required>
+                <select name="number_of_guests" id="reservation-guests" required>
                     <option value="1">1人</option>
                     <option value="2">2人</option>
-                    <!-- Add more guest number options here -->
+                    <option value="3">3人</option>
+                    <option value="4">4人</option>
+                    <option value="5">5人</option>
+                    <option value="6">6人</option>
+                    <option value="7">7人</option>
+                    <option value="8">8人</option>
+                    <option value="9">9人</option>
+                    <option value="10">10人</option>
                 </select>
             </div>
             <div class="reservation-summary">
@@ -54,27 +65,28 @@
 
 @section('scripts')
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const dateInput = document.querySelector('input[name="date"]');
-        const timeSelect = document.querySelector('select[name="time"]');
-        const guestsSelect = document.querySelector('select[name="number_of_guests"]');
-        
-        const summaryDate = document.getElementById('summary-date');
-        const summaryTime = document.getElementById('summary-time');
-        const summaryGuests = document.getElementById('summary-guests');
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('reservation-form');
+    const dateInput = document.getElementById('reservation-date');
+    const timeSelect = document.getElementById('reservation-time');
+    const guestsSelect = document.getElementById('reservation-guests');
+    
+    const summaryDate = document.getElementById('summary-date');
+    const summaryTime = document.getElementById('summary-time');
+    const summaryGuests = document.getElementById('summary-guests');
 
-        function updateSummary() {
-            summaryDate.textContent = dateInput.value;
-            summaryTime.textContent = timeSelect.value;
-            summaryGuests.textContent = guestsSelect.value + '人';
-        }
+    function updateSummary() {
+        summaryDate.textContent = dateInput.value;
+        summaryTime.textContent = timeSelect.value;
+        summaryGuests.textContent = guestsSelect.value + '人';
+    }
 
-        dateInput.addEventListener('change', updateSummary);
-        timeSelect.addEventListener('change', updateSummary);
-        guestsSelect.addEventListener('change', updateSummary);
+    // フォーム全体にイベントリスナーを追加
+    form.addEventListener('input', updateSummary);
+    form.addEventListener('change', updateSummary);
 
-        // Initialize summary
-        updateSummary();
-    });
+    // 初期化時にもサマリーを更新
+    updateSummary();
+});
 </script>
 @endsection

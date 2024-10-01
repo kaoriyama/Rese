@@ -23,8 +23,8 @@ class Reservation extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function restaurant()
+    public function shop()
     {
-        return $this->belongsTo(Restaurant::class);
+        return $this->belongsTo(Restaurant::class, 'restaurant_id');
     }
 }

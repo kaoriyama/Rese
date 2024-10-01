@@ -27,4 +27,12 @@ class ReservationController extends Controller
 
         return redirect()->back()->with('success', '予約が完了しました。');
     }
+
+    public function cancel(Reservation $reservation)
+    {
+        // 予約をキャンセルする処理
+        $reservation->delete();
+
+        return redirect()->route('mypage')->with('success', '予約をキャンセルしました。');
+    }
 }
