@@ -38,16 +38,9 @@
             </div>
             <div class="form-group">
                 <select name="number_of_guests" id="reservation-guests" required>
-                    <option value="1">1人</option>
-                    <option value="2">2人</option>
-                    <option value="3">3人</option>
-                    <option value="4">4人</option>
-                    <option value="5">5人</option>
-                    <option value="6">6人</option>
-                    <option value="7">7人</option>
-                    <option value="8">8人</option>
-                    <option value="9">9人</option>
-                    <option value="10">10人</option>
+                    @for ($i = 1; $i <= 10; $i++)
+                        <option value="{{ $i }}">{{ $i }}人</option>
+                    @endfor
                 </select>
             </div>
             <div class="reservation-summary">

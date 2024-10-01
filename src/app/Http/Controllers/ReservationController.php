@@ -25,7 +25,7 @@ class ReservationController extends Controller
             'status' => 'pending',
         ]);
 
-        return redirect()->back()->with('success', '予約が完了しました。');
+        return redirect()->route('reservation.done');
     }
 
     public function cancel(Reservation $reservation)
