@@ -27,4 +27,9 @@ class Reservation extends Model
     {
         return $this->belongsTo(Restaurant::class, 'restaurant_id');
     }
+
+    public function getFormattedTimeAttribute()
+    {
+        return Carbon::parse($this->time)->format('H:i');
+    }
 }

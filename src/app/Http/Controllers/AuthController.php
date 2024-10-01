@@ -15,7 +15,7 @@ class AuthController extends Controller
 
     public function showRegistrationForm()
     {
-        return view('auth.register');  // 'auth.register'に変更
+        return view('auth.register');
     }
 
     public function register(Request $request)
@@ -34,7 +34,7 @@ class AuthController extends Controller
 
         auth()->login($user);
 
-        return redirect('/')->with('success', '会員登録が完了しました。');
+        return redirect()->route('register.thanks');
     }
 
     public function showThanksPage()
