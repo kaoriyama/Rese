@@ -14,9 +14,9 @@
                 <div class="reservation-card">
                     <h4>予約 {{ $loop->iteration }}</h4>
                     <p><strong>Shop:</strong> {{ $reservation->shop->name }}</p>
-                    <p><strong>Date:</strong> {{ $reservation->date }}</p>
-                    <p><strong>Time:</strong> {{ $reservation->time }}</p>
-                    <p><strong>Number:</strong> {{ $reservation->number }}人</p>
+                    <p><strong>Date:</strong> {{ $reservation->reservation_date }}</p>
+                    <p><strong>Time:</strong> {{ \Carbon\Carbon::parse($reservation->reservation_time)->format('H:i') }}</p>
+                    <p><strong>Number:</strong> {{ $reservation->number_of_guests }}人</p>
                     <form action="{{ route('reservations.cancel', $reservation->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
