@@ -51,3 +51,27 @@
     cursor: pointer;
     float: right;
 }
+
+.favorite-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #ccc;
+    transition: color 0.3s ease;
+}
+
+.favorite-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.fa-heart {
+    color: #ccc;
+    font-size: 24px;
+}
+
+.fa-heart.favorited {
+    color: red;
+}

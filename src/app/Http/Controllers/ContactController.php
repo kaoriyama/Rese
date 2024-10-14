@@ -29,4 +29,24 @@ class ContactController extends Controller
         return view('done');
     }
 
+    public function search(Request $request)
+    {
+        $query = Restaurant::query();
+
+        if ($request->filled('area')) {
+            $query->where('area_id', $request->area);
+        }
+
+        if ($request->filled('genre')) {
+            $query->where('genre_id', $request->genre);
+        }
+
+        if ($request->filled('search')) {
+            $query->where('name', 'like', '%' . $request->search . '%');
+        }
+
+        $restaurants = $query->with(['area', 'genre'])->get();
+
+        return view('partials.restaurant_grid', compact('restaurants'));
+    }
 }

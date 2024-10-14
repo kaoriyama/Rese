@@ -16,4 +16,27 @@ class Restaurant extends Model
     {
         return $this->belongsTo(Genre::class);
     }
+
+    public function getIsFavoritedAttribute()
+    {
+        if (auth()->check()) {
+            return $this->favorites()->where('user_id', auth()->id())->exists();
+        }
+        return false;
+    }
+
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
+    }
+
+    public function isFavoritedByUser($userId)
+    {
+        return $this->favorites()->where('user_id', $userId)->exists();
+    }
+    
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
 }
